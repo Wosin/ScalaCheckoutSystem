@@ -1,0 +1,5 @@
+.idea/
+*.iml
+out/
+target/scala-2.12/classes/Apple$.class
+target/
