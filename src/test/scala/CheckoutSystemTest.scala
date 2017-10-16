@@ -19,6 +19,27 @@ class CheckoutSystemTest extends FlatSpec with Matchers {
     val fruits = List(Orange, Apple, Apple, Apple)
     val price = CheckoutSystem.calculatePrice(fruits)
 
-    price shouldEqual 2.05
+    price shouldEqual 1.45
+  }
+
+  "Checkout System" should "calculate price of two apples when 4 are bought" in {
+    val fruits = List(Apple, Apple, Apple, Apple)
+    val afterDicountList = List(Apple, Apple, Apple)
+    val price = CheckoutSystem.calculatePrice(fruits)
+    val priceDiscountedManually = CheckoutSystem.calculatePrice(afterDicountList)
+
+    price shouldEqual 1.2
+    price shouldEqual priceDiscountedManually
+  }
+
+  "Checkout System" should "calculate price of four oranges when 6 are bought" in {
+    val fruits = List(Orange, Orange, Orange, Orange, Orange, Orange)
+    val afterDiscountList = List(Orange, Orange, Orange, Orange, Orange)
+
+    val price = CheckoutSystem.calculatePrice(fruits)
+    val priceDiscountedManually = CheckoutSystem.calculatePrice(afterDiscountList)
+
+    price shouldEqual 1.0
+    price shouldEqual priceDiscountedManually
   }
 }
